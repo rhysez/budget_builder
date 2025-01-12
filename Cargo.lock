@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "budget_builder"
+name = "rusty_budget"
 version = "0.1.0"
