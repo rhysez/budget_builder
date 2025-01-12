@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::io::{stdin, stdout};
 
 struct Budget {
     name: String,
@@ -15,7 +16,7 @@ impl Budget {
         &self.desc
     }
 
-    fn get_all_items(&self) {
+    fn get_expenses(&self) {
         for (name, cost) in &self.items {
             println!("{name}: {cost}")
         }
@@ -38,14 +39,29 @@ impl Budget {
     }
 }
 
+fn init_budget() -> Budget {
+    let mut name: String = String::new();
+    let mut desc: String = String::new();
+
+    println!("Please provide a name for this budget tracker:");
+    match stdin().read_line(&mut name) {
+        Ok(_) => println!("Thanks."),
+        Err(err) => println!("Error: {err}")
+    }
+
+    println!("Please provide a description for this budget tracker:");
+    match stdin().read_line(&mut desc) {
+        Ok(_) => println!("Thanks."),
+        Err(err) => println!("Error: {err}")
+    }
+
+    Budget::new(name, desc)
+}
+
 fn main() {
-    let mut budget: Budget = Budget::new(String::from("Test"), String::from("Example description"));
+    let budget = init_budget();
 
     // This code could be added to a Budget method
     let name = String::from("Dummy");
     let dummy_item: Option<&u32> = budget.items.get(&name);
-    match dummy_item {
-        Some(dummy_item) => println!("{}: {}", &name, &dummy_item),
-        None => println!("Item does not exist under name of {}.", &name),
-    }
 }
