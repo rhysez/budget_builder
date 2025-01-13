@@ -1,2 +1,2 @@
-# rusty_budget
-Rusty Budget is a budget/finance tracker for the terminal, built in Rust. 
+# rust-budget-planner
+Rust Budget Planner is a budget/finance tracker for the terminal, built in Rust. 
